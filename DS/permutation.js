@@ -14,6 +14,7 @@ function perm(str){
             arr.push(start+item);
         });
     }
+    
     return arr;
 }
 console.log(perm(str));
