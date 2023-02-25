@@ -1,0 +1,14 @@
+#transition {
+    display: flex;
+    height: 200px;
+    width: 200px;
+    background-color: aquamarine;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin: 0 auto;
+}
+
+div{
+    transform: rotate(20deg)
+}

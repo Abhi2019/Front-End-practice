@@ -1,0 +1,33 @@
+#service{
+    height: 100px;
+    width: 100%;
+    background-color: aqua;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#main{
+   
+    height: 20px;
+    width: 200px;
+}
+
+#pyroli {
+    width: 200px;
+    height: 200px;
+    float: left;
+    padding: 6px;
+    clear: both;
+}
+section {
+    height: 400px;
+    width: 600px;
+}
+#para{
+    padding: 2px;
+}
+#nav {
+    height: 200px;
+    width: 100%;
+    background-color: mediumorchid;
+}
