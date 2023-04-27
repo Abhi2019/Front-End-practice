@@ -19,9 +19,9 @@ const data = new Promise((resolve, reject)=>{
 // console.log("tag1");
 
 
-const data1 = Promise.resolve("www");
-const data2 = Promise.reject("error122");
-const data3 = Promise.resolve("woow");
+// const data1 = Promise.resolve("www");
+// const data2 = Promise.reject("error122");
+// const data3 = Promise.resolve("woow");
 
 // Promise.allSettled([data1,data3, data2]).then((result)=>{
 //     console.log("The datas are : ", result);
@@ -127,24 +127,23 @@ function PromiseALL(arr) {
     });
 }
 
-PromiseALL([data1,data3,data2]).then((result)=>{
-    console.log("The datas are : ", result);
-}).catch((error)=>{
-    console.log("Error : ", error);
-});
+// PromiseALL([data1,data3,data2]).then((result)=>{
+//     console.log("The datas are : ", result);
+// }).catch((error)=>{
+//     console.log("Error : ", error);
+// });
 
 
 
 
 class CustomePromise {
     state ="pending";
-     onSucesss =[]; onReject =[];
+     onSucesss =[]; onReject =[]; value;
     constructor(excutor){
         const onResolve = (args)=>{
             this.state = "Fulfilled";
-            this.onSucesss.forEach((fn)=>{
-               return fn.call(this,args);
-            });
+            this.value = args;
+            this.callback();
         }
         const Onreject = (err)=>{
             this.state = "Rejcted";
@@ -155,12 +154,39 @@ class CustomePromise {
 
         excutor(onResolve, Onreject);
     }
+    callback = function (){
+        if(this.state === 'Fulfilled') {
+            this.onSucesss.forEach((fn)=>{
+                return fn.call(this, this.value);
+             });
+             this.onSucesss =[]
+        }
+       
+    }
 
     then = function (onSuccessfn, onRejectfn){
-        if(this.state === "pending"){
-            onSuccessfn && this.onSucesss.push(onSuccessfn);
-            onRejectfn && this.onReject.push(onRejectfn);
-        }
+        // onSuccessfn && this.onSucesss.push(onSuccessfn);
+        // onRejectfn && this.onReject.push(onRejectfn);
+        // if(this.state === "Fulfilled"){
+        //     this.callback();
+        // }
+        return new CustomePromise((resolve, reject)=>{
+            this.onSucesss.push((result)=>{
+                if(result == null) {
+                    resolve(result);
+                    return;
+                }
+                resolve(onSuccessfn(result));
+            });
+            this.onReject.push((result)=>{
+                if(result == null) {
+                    reject(result);
+                    return;
+                }
+                reject(onRejectfn(result));
+            })
+            this.callback();
+        })
 
     }
     catch = function(onRejectfn){
@@ -194,6 +220,7 @@ let p = new CustomePromise((resolve, reject)=>{
     setTimeout(()=>{
         resolve("Resolved");
     },4000);
+    // resolve("Resolved");
 });
 
 let p1 = new CustomePromise((resolve, reject)=>{
@@ -206,18 +233,19 @@ let p1 = new CustomePromise((resolve, reject)=>{
 
 p.then((data)=>{
     console.log(data); //
-});
+    return data;
+}).then((data)=>{
+    console.log("data",data); //
+});;
 
-p.then((data)=>{
-    console.log(data); //
-});
+
 
 const a =[];
 a[5] ="str";
 
-CustomePromise.all([p,p1]).then((data)=>{
-    console.log("PromsieAll", data);
-}); 
+// CustomePromise.all([p,p1]).then((data)=>{
+//     console.log("PromsieAll", data);
+// }); 
 
 // p.then((data)=>{
 //     console.log("second", data);

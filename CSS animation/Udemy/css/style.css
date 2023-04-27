@@ -1,0 +1,61 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #777;
+  padding: 30px;
+}
+
+header {
+  height: 95vh;
+  background-image: linear-gradient(
+      to right bottom,
+      #53da536e,
+      rgb(87, 22, 207)
+    ),
+    url("../img/child.jpeg");
+  background-size: cover;
+  background-position: top;
+  clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);
+  position: relative;
+}
+.logo-box {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+}
+.logo {
+  border-radius: 50%;
+  height: 50px;
+}
+.logotitle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: red;
+}
+
+.heading {
+  color: white;
+  text-transform: uppercase;
+}
+
+.heading-primary {
+  display: block;
+  font-weight: 400;
+  font-size: 40px;
+  letter-spacing: 25px;
+}
+.heading-bottom {
+  display: block;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 15px;
+}
