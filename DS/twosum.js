@@ -1,18 +1,21 @@
-let arr =[1,2,3,4,5,6,7];
-const target=8;
+let arr =[-1,0,1,2,-1,-4];
+const target= 0;
+let obj ={};
 
-for(let i =0; i< arr.length; i++){
-    let map = new Map();
-    let sum = target - arr[i];
-    // for(let j =i+1; j < arr.length; j++){
-    //     if(map.get(sum-arr[j])) {
-    //         console.log(arr[i], arr[j], sum - arr[j]);
-    //     } else {
-    //         map.set(arr[j],1);
-    //     }
-    // }
+// for(let i =0; i< arr.length; i++){
+//     let map = new Map();
+//     let sum = target - arr[i];
+//     for(let j =i+1; j < arr.length; j++){
+//         let str = arr[i].toString() + arr[j].toString()+ (sum - arr[j]).toString();
+//         if(map.get(sum-arr[j]) && obj[str] === undefined) {
+//             console.log(arr[i], arr[j], sum - arr[j]);
+//             obj[str] =1;
+//         } else {
+//             map.set(arr[j],1);
+//         }
+//     }
    
-}
+// }
 
 //permutation:
 // let str ="ABC";
@@ -84,24 +87,24 @@ for(let i =0; i< arr.length; i++){
 // console.log(total);
 
 
-let person1 ={
-    name:"Abhijit",
-    marks: 29,
-    pass: function(college,time) {
-        if(this.marks > 30) {
-            console.log(this.name +" is passed : ", this.marks +"from " + college +"from ", time);
-        } else {
-            console.log(this.name +" is failed : ", this.marks +"from " + college );
-        }
-    }
-}
+// let person1 ={
+//     name:"Abhijit",
+//     marks: 29,
+//     pass: function(college,time) {
+//         if(this.marks > 30) {
+//             console.log(this.name +" is passed : ", this.marks +"from " + college +"from ", time);
+//         } else {
+//             console.log(this.name +" is failed : ", this.marks +"from " + college );
+//         }
+//     }
+// }
 
-let person2 ={
-    name: "Abhi",
-    marks: 35
-}
+// let person2 ={
+//     name: "Abhi",
+//     marks: 35
+// }
 
-let b = person1.pass.bind(person2);
+// let b = person1.pass.bind(person2);
 // b("abc","2022");
 //console.log(b);
 
@@ -121,13 +124,13 @@ let b = person1.pass.bind(person2);
 
 // person1.pass.myApply(person2, ["aaa", "2022"]);
 
-Function.prototype.mybind = function(args){
-    let obj = args;
-    obj.fn = this;
-    return function(...param){
-        obj.fn(...param);
-    }
-}
+// Function.prototype.mybind = function(args){
+//     let obj = args;
+//     obj.fn = this;
+//     return function(...param){
+//         obj.fn(...param);
+//     }
+// }
 
 // let b1 = person1.pass.mybind(person2);
 // b1("abc","2022");
@@ -141,25 +144,25 @@ Function.prototype.mybind = function(args){
 //     }
 // }
 
-function multiple(a,b,c){
-    return a*b*c;
-}
+// function multiple(a,b,c){
+//     return a*b*c;
+// }
 
-function curryFunction(fn){
+// function curryFunction(fn){
 
-    return function curry(...args1){
-        if(args1.length >= fn.length){
-            return fn.apply(this, args1);
-        } else {
-            return function(...arg2){
-                return curry.apply(this, args1.concat(arg2));
-            }
-        }
-    }
+//     return function curry(...args1){
+//         if(args1.length >= fn.length){
+//             return fn.apply(this, args1);
+//         } else {
+//             return function(...arg2){
+//                 return curry.apply(this, args1.concat(arg2));
+//             }
+//         }
+//     }
 
-}
+// }
 
-const mul = curryFunction(multiple);
+// const mul = curryFunction(multiple);
 
 // console.log(mul(1)(2)(3));
 // console.log(mul(1 ,2)(4));
