@@ -1,23 +1,29 @@
-let nums = [0,3,7,2,5,8,4,6,0,1]
-let obj ={}
-for(let i =0;i < nums.length; i++) {
-    if(obj[nums[i]]== undefined){
+let nums = [100,4,200,1,3,2];
+
+let obj = {};
+for(let i =0; i < nums.length; i++) {
+    if(!obj[nums[i]]){
         obj[nums[i]] = 1;
     }
 }
-let largestN =0;
-let countC =0;
-for(let i =0;i < nums.length; i++ ){
+
+let largestCS =0;
+
+for(let i =0; i < nums.length; i++){
     let start = nums[i];
-    if(!obj[start-1]){
-        let currentC =0;
-        let currentN= nums[i];
-        while(obj[currentN]){
-            currentN++;
+    console.log("start: ", start);
+    if(!obj[start-1]) {
+        let currentC = 0;
+        let currentN = nums[i];
+        console.log("currentN",currentN);
+        while(obj[currentN]) {
+           console.log("currentN1",currentN);
             currentC++;
+            currentN++;
         }
-        largestN = Math.max(largestN,currentC);
+        largestCS = Math.max(largestCS,currentC);
     }
+   
 }
 
-console.log("largestConseq: ", largestN);
+console.log(largestCS);
